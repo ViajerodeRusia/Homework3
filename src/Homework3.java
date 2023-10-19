@@ -143,6 +143,5 @@ public class Homework3 {
             }
         }
         System.out.println();
-        System.out.println("The end");
     }
 }
