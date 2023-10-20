@@ -74,11 +74,10 @@ public class Homework3 {
         //Задача6
         System.out.println("Задача6");
         investmentsComplex = 0;
-        i = 0;
         int period = 9*12;
-        for (; i<=period; i++) {
+        for (i = 1; i<=period; i++) {
             investmentsComplex = (investmentsComplex + 15000) * 1.07;
-            if (i%6==0 && i!=0) {
+            if (i%6==0) {
                 result = String.format("%.3f", investmentsComplex);
                 System.out.println("Месяц " + i + ", сумма накоплений равна " + result + " рублей");
             }
@@ -94,24 +93,19 @@ public class Homework3 {
         int today = in.nextInt();
 
         int friday = fridayFirst;
-        boolean isFridayToday = false;
         /*
          Прибавляем к каждому по 7, пока<31.
          Если today = одному из этих дней, то пишем напоминание об отчете.
          При этом должно получиться еще 4-5 сообщений с напоминаниями по разным датам пятниц.
         */
         do {
-            if (today==friday) {
-                isFridayToday=true;
-            }
             System.out.println("Пятница,"+ friday + "-е число. Необходимо подготовить отчет.");
+            if (today==friday) {
+                System.out.println("(Кстати, сегодня пятница,"+ today + "-е число. Подготовьте отчет)");
+            }
             friday+=7;
         }
         while (friday<=31);
-        System.out.println();
-        if (isFridayToday) {
-            System.out.println("Сегодня пятница,"+ today + "-е число. Подготовьте отчет.");
-        }
         System.out.println();
 
         //Задача8
@@ -124,24 +118,15 @@ public class Homework3 {
          Надо вывести все ее пролеты над землей за последние 200 лет
          Надо вывести следующий год пролета кометы (ближайшие 100 лет)
         */
-        for (i = (thisYear-200);i<=thisYear;i++) {
-            if (i%79==0) {
-                System.out.println("Прошлые пролеты комет:");
-                do {
-                    System.out.println(i);
-                    i+=79;
-                }
-                while (i<=thisYear);
-                System.out.println();
-                System.out.println("Будущие пролеты комет:");
-                do {
-                    System.out.println(i);
-                    i+=79;
-                }
-                while (i<=(thisYear+100));
-                break;
+        for (i = (thisYear-200);i <= (thisYear+100); i++) {
+            if (i % 79 == 0 && i<=thisYear) {
+                System.out.println("Прошлый пролет кометы: "+i);
+                i+=78;
+            }
+            if (i % 79 == 0) {
+                System.out.println("Будущий пролет кометы: "+i);
+                i+=78;
             }
         }
-        System.out.println();
     }
 }
